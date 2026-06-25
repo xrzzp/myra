@@ -472,18 +472,16 @@ transition:1s;
 .letter {
     position: absolute;
     
-    /* Ukuran kertas saat di laptop/layar besar */
-    width: 550px; 
+    width: 520px; 
     height: 380px; 
 
-    /* Standarisasi posisi awal tepat di tengah amplop */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(0.3);
     
     background: white;
     color: #333;
-    padding: 70px 35px 35px 35px;
+    padding: 50px 30px 30px 30px;
     border-radius: 24px; 
     overflow: auto;
     opacity: 0;
@@ -493,12 +491,11 @@ transition:1s;
     z-index: 1;
 }
 
-/* Otomatis menyesuaikan ukuran saat dibuka di layar HP */
 @media(max-width:900px){
     .letter {
-        width: 62vw;
+        width: 78vw;
         height: auto;
-        max-height: 60vh;
+        max-height: 65vh;
         left: 50%;
         top: 50%;
         margin-left: 0;
@@ -1635,14 +1632,13 @@ infinite;
 
 @media(max-width:900px){
     .polaroid {
-        width: 80px; /* lebih kecil biar tidak ketutupan */
+        width: 110px;
     }
-    .p1 { left: 5%; top: 5%; }
-    .p2 { right: 5%; top: 5%; }
-    .p3 { left: 5%; bottom: 5%; }
-    .p4 { right: 5%; bottom: 5%; }
+    .p1 { left: 1%; top: 5%; }
+    .p2 { right: 1%; top: 5%; }
+    .p3 { left: 1%; bottom: 5%; }
+    .p4 { right: 1%; bottom: 5%; }
 }
-
 /* FLOAT */
 
 .polaroid{
