@@ -460,15 +460,13 @@ transition:1s;
 
 .letter {
     position: absolute;
-    
-    /* Membuat ukuran kertas jauh lebih besar dari amplop (320x230) */
-    width: 600px; 
-    height: 450px; 
+    width: 550px; 
+    height: 380px; 
 
-    /* Trik centering agar posisinya tepat di tengah-tengah amplop */
+    /* Memastikan kertas berada tepat di tengah koordinat amplop */
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) scale(0.3); /* Mengecil saat di dalam */
+    transform: translate(-50%, -50%) scale(0.3);
     
     background: white;
     color: #333;
@@ -477,7 +475,9 @@ transition:1s;
     overflow: auto;
     opacity: 0;
     
-    /* Efek transisi halus saat keluar */
+    /* Membuat isi teks tulisan di dalam surat menjadi rata tengah */
+    text-align: center; 
+    
     transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
     z-index: 1;
 }
@@ -838,6 +838,17 @@ opacity:.7;
 
 }
 
+/* Sembunyikan elemen teks dan emoji saat buket bunga diklik */
+.words .flowerTitle,
+.words .flowerCenter,
+.words .flowerSub,
+.words .flowerClick {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    pointer-events: none; /* Supaya tidak bisa diklik lagi setelah hilang */
+}
+
 @media(max-width:900px){
 
 .flowerCenter{
@@ -863,23 +874,22 @@ font-size:54px;
 }
 
 /* CAKE */
+.cakePage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
 
-.cakePage{
-
-width:100%;
-
-height:100%;
-
-padding:40px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:auto;
-
+.musicSection {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .scrapbook{
@@ -928,104 +938,66 @@ margin-bottom:20px;
 
 }
 
-.photoGrid{
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:16px;
-
+.photoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
-.photoGrid img{
-
-width:100%;
-
-height:250px;
-
-object-fit:cover;
-
-border-radius:14px;
-
-transition:.6s;
-
+.photoGrid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: .4s;
 }
 
-.photoGrid img:hover{
-
-transform:
-
-rotate(2deg)
-
-scale(1.04);
-
+.photoGrid img:hover {
+    transform: rotate(2deg) scale(1.04);
 }
 
-.rightSide{
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-justify-content:center;
-
+/* Tombol Close Pop-up Foto */
+.closePhotosBtn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #98001f;
+    cursor: pointer;
+    line-height: 1;
 }
 
-.musicTitle{
-
-font-size:54px;
-
-font-family:
-Great Vibes;
-
-margin-bottom:30px;
-
+.musicTitle {
+    font-size: 54px;
+    font-family: "Great Vibes";
+    margin-bottom: 10px;
 }
 
-.vinylWrap{
-
-display:flex;
-
-justify-content:center;
-
+.vinylWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.vinyl{
+.vinyl {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #000 20%, #222 35%, #111 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    animation: spin 6s linear infinite;
+}
 
-width:260px;
-
-height:260px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(
-circle,
-#000 20%,
-#222 35%,
-#111 100%
-);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:80px;
-
-animation:
-
-spin
-8s
-linear
-infinite;
-
+@media(max-width:900px){
+    .vinyl { width: 160px; height: 160px; font-size: 50px; }
+    .musicTitle { font-size: 40px; }
+    .song { font-size: 20px; }
+    .photoGrid img { height: 130px; }
 }
 
 @keyframes spin{
@@ -1046,56 +1018,81 @@ rotate(360deg);
 
 }
 
-.musicCard{
-
-margin-top:30px;
-
-text-align:center;
-
+.musicCard {
+    text-align: center;
 }
 
-.song{
-
-font-size:26px;
-
+.song {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
-.desc{
-
-margin-top:15px;
-
-opacity:.8;
-
-line-height:1.8;
-
+.desc {
+    margin-top: 15px;
+    opacity: .8;
+    line-height: 1.8;
+    font-size: 14px;
 }
 
-.play{
-
-display:inline-block;
-
-margin-top:30px;
-
-padding:
-
-15px 40px;
-
-background:white;
-
-color:#98001f;
-
-border-radius:999px;
-
-text-decoration:none;
-
+.play {
+    display: inline-block;
+    padding: 12px 35px;
+    background: white;
+    color: #98001f;
+    border: none;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.play:hover{
+.play:hover {
+    transform: scale(1.05);
+}
 
-transform:
+/* POPUP FOTO GAYA MODAL DI TENGAH LAYAR */
+.photoPopupWrapper {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* Efek gelap di belakang pop-up */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    
+    /* Tersembunyi di awal */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
 
-translateY(-4px);
+/* Kotak Kertas Foto */
+.photoPopupWrapper .paper {
+    background: #fff6f6;
+    padding: 35px;
+    border-radius: 30px;
+    color: #222;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    width: 650px;
+    max-width: 90%;
+    position: relative;
+    
+    /* Efek meluncur pop-up */
+    transform: scale(0.7) translateY(30px);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
+/* Saat pop-up aktif */
+.photoPopupWrapper.show-photos {
+    opacity: 1;
+    visibility: visible;
+}
+
+.photoPopupWrapper.show-photos .paper {
+    transform: scale(1) translateY(0);
 }
 
 @media(max-width:900px){
@@ -1107,10 +1104,12 @@ grid-template-columns:
 
 }
 
-.paperTitle{
-
-font-size:36px;
-
+.paperTitle {
+    font-size: 42px;
+    font-family: "Great Vibes";
+    color: #98001f;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .musicTitle{
@@ -1960,105 +1959,45 @@ Click bouquet
 
 <!-- CAKE -->
 
-<section
-class="page"
-id="cake">
+<!-- CAKE -->
+<section class="page" id="cake">
 
-<button
-class="back"
-onclick="closePage()">
+    <button class="back" onclick="closePage()">←</button>
 
-←
+    <div class="cakePage">
+        <!-- Konten Musik dibuat Center Menghadap ke Atas -->
+        <div class="musicSection">
+            <div class="musicTitle">Music For You</div>
+            
+            <div class="vinylWrap">
+                <div class="vinyl">🎵</div>
+            </div>
 
-</button>
+            <div class="musicCard">
+                <div class="song">Until I Found You — Stephen Sanchez</div>
+                
+                <button class="play" onclick="playMusic()">▶ PLAY MUSIC</button>             
+            </div>
+        </div>
 
-
-<div class="cakePage">
-
-<div class="scrapbook">
-
-<div class="leftSide">
-
-<div class="paper">
-
-<div class="paperTitle">
-
-Our Memories
-
-</div>
-
-<div class="photoGrid">
-
-<img src="MIRA.jpg">
-
-<img src="blkng.jpeg">
-
-<img src="l.jpeg">
-
-<img src="r.jpeg">
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="rightSide">
-
-<div class="musicTitle">
-
-Music For You
-
-</div>
-
-
-<div class="vinylWrap">
-
-<div class="vinyl">
-
-🎵
-
-</div>
-
-</div>
-
-
-<div class="musicCard">
-
-<div class="song">
-
-Until I Found You — Stephen Sanchez
-
-</div>
-
-<div class="desc">
-
-Play your favorite song
-
-while reading this page ❤️
-
-</div>
-
-
-<button
-class="play"
-onclick="playMusic()">
-
-▶ PLAY MUSIC
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+        <!-- Pop-up Foto yang tersembunyi, akan muncul di tengah layar saat di-play -->
+        <div class="photoPopupWrapper">
+            <div class="paper">
+                <div class="paperTitle">Our Memories</div>
+                <!-- Tombol close kecil untuk menutup pop-up foto secara manual jika diinginkan -->
+                <button class="closePhotosBtn" onclick="togglePhotosPopup(false)">×</button>
+                
+                <div class="photoGrid">
+                    <img src="MIRA.jpg">
+                    <img src="blkng.jpeg">
+                    <img src="l.jpeg">
+                    <img src="r.jpeg">
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
-
 
 <script>
 
@@ -2312,46 +2251,35 @@ music.pause()
 
 /* MUSIC */
 function playMusic(){
+    const music = document.getElementById("bgm");
+    const popup = document.querySelector(".photoPopupWrapper");
+    const playBtn = document.querySelector(".play");
 
-const music=
-
-document
-.getElementById(
-"bgm"
-)
-
-if(
-music.paused
-){
-
-music.play()
-
-document
-.querySelector(
-".play"
-)
-
-.innerHTML=
-
-"⏸ PAUSE MUSIC"
-
-}else{
-
-music.pause()
-
-document
-.querySelector(
-".play"
-)
-
-.innerHTML=
-
-"▶ PLAY MUSIC"
-
+    if(music.paused){
+        music.play();
+        playBtn.innerHTML = "⏸ PAUSE MUSIC";
+        
+        // Memunculkan pop-up foto di tengah layar secara otomatis saat musik di-play
+        if(popup) {
+            popup.classList.add("show-photos");
+        }
+    } else {
+        music.pause();
+        playBtn.innerHTML = "▶ PLAY MUSIC";
+    }
 }
 
+// Fungsi tambahan untuk tombol silang (x) di pojok pop-up foto
+function togglePhotosPopup(show) {
+    const popup = document.querySelector(".photoPopupWrapper");
+    if(popup) {
+        if(show) {
+            popup.classList.add("show-photos");
+        } else {
+            popup.classList.remove("show-photos");
+        }
+    }
 }
-
 
 /* GLOW */
 
