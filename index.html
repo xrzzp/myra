@@ -305,26 +305,18 @@ font-size:72px;
 
 }
 
-.back{
-
-position:absolute;
-
-left:40px;
-
-top:40px;
-
-padding:12px 20px;
-
-border:none;
-
-background:white;
-
-color:#8f001d;
-
-border-radius:40px;
-
-cursor:pointer;
-
+.back {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    padding: 12px 20px;
+    border: none;
+    background: white;
+    color: #8f001d;
+    border-radius: 40px;
+    cursor: pointer;
+    /* Tambahkan baris di bawah ini agar tombol selalu muncul di atas semua elemen */
+    z-index: 99; 
 }
 
 @media(max-width:900px){
@@ -469,22 +461,23 @@ transition:1s;
 .letter {
     position: absolute;
     
-    /* Ukuran dilebarkan, tapi tinggi dikurangi agar proporsional */
-    width: 550px; 
-    height: 380px; 
+    /* Membuat ukuran kertas jauh lebih besar dari amplop (320x230) */
+    width: 600px; 
+    height: 450px; 
 
-    /* Posisi awal tepat di tengah amplop */
+    /* Trik centering agar posisinya tepat di tengah-tengah amplop */
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(0.3); /* Mengecil saat di dalam */
     
     background: white;
     color: #333;
-    padding: 35px; 
+    padding: 40px; 
     border-radius: 24px; 
     overflow: auto;
     opacity: 0;
     
+    /* Efek transisi halus saat keluar */
     transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
     z-index: 1;
 }
