@@ -432,6 +432,17 @@ rgba(0,0,0,.4);
 
 }
 
+.envelope.open {
+    background: transparent;
+    box-shadow: none;
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.envelope.open .cover {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 .cover{
 
 position:absolute;
@@ -485,9 +496,9 @@ transition:1s;
 /* Otomatis menyesuaikan ukuran saat dibuka di layar HP */
 @media(max-width:900px){
     .letter {
-        width: 85vw;
+        width: 62vw;
         height: auto;
-        max-height: 75vh;
+        max-height: 60vh;
         left: 50%;
         top: 50%;
         margin-left: 0;
@@ -1622,15 +1633,14 @@ infinite;
     transform: rotate(6deg);
 }
 
-/* Biar di HP fotonya mengecil otomatis dan tidak berantakan keluar layar */
 @media(max-width:900px){
     .polaroid {
-        width: 100px; /* Ukuran foto lebih pas di HP */
+        width: 80px; /* lebih kecil biar tidak ketutupan */
     }
-    .p1 { left: 4%; top: 8%; }
-    .p2 { right: 4%; top: 8%; }
-    .p3 { left: 4%; bottom: 8%; }
-    .p4 { right: 4%; bottom: 8%; }
+    .p1 { left: 5%; top: 5%; }
+    .p2 { right: 5%; top: 5%; }
+    .p3 { left: 5%; bottom: 5%; }
+    .p4 { right: 5%; bottom: 5%; }
 }
 
 /* FLOAT */
