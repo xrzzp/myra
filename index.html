@@ -330,190 +330,239 @@ cursor:pointer;
 @media(max-width:900px){
 
 body{
+
 overflow:auto;
+
 }
 
 .main{
+
 padding:50px;
+
 height:auto;
+
 }
 
 .title{
+
 font-size:48px;
+
 }
 
 .gifts{
+
 flex-direction:column;
+
 }
 
 .box{
+
 width:180px;
+
 height:180px;
+
 font-size:90px;
+
+}
+
 }
 
 
-/* MESSAGE PAGE */
+/* MESSAGE */
+
 .messageWrap{
+
 width:100%;
+
 height:100%;
+
 position:relative;
+
 overflow:hidden;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 }
 
 .bgPhoto{
+
 position:absolute;
+
 inset:0;
-background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.25)), url("iloveu.jpg");
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.15),
+rgba(0,0,0,.25)
+),
+
+url("iloveu.jpeg");
+
 background-size:cover;
+
 background-position:center;
-filter: blur(2px);
+
+filter:
+
+blur(2px);
+
 transform:scale(1.1);
+
 }
 
 .envelope{
+
 position:relative;
+
 width:320px;
+
 height:230px;
-background: #c01234;
+
+background:
+
+#c01234;
+
 border-radius:12px;
+
 cursor:pointer;
+
 z-index:5;
-box-shadow: 0 20px 60px rgba(0,0,0,.4);
+
+box-shadow:
+
+0 20px 60px
+rgba(0,0,0,.4);
+
 }
 
 .cover{
+
 position:absolute;
+
 width:100%;
+
 height:120px;
-background: #e31b45;
-clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+background:
+
+#e31b45;
+
+clip-path:
+
+polygon(
+0 0,
+100% 0,
+50% 100%
+);
+
 transform-origin:top;
+
 transition:1s;
+
 }
 
-.letter {
-    position: absolute;
-    left: -180px;  /* Ukuran pas di laptop */
-    right: -180px;
-    height: 450px; 
-    background: white;
-    color: #333;
-    padding: 40px 35px;
-    border-radius: 24px;
-    overflow: auto;
-    transform: translateY(150px) scale(0.9);
-    opacity: 0;
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity .5s ease;
-    z-index: 1;
-}
+.letter{
 
-.open .cover{
-transform: rotateX(180deg);
-}
-
-.open .letter {
-    transform: translateY(-160px) scale(1);
-    opacity: 1;
-    z-index: 10;
-}
-
-.letterTitle {
-    font-family: "Great Vibes";
-    font-size: 38px;
-    color: #a70028;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.letterText {
-    line-height: 1.8;
-    font-size: 15px;
-    text-align: center; /* Teks otomatis rata tengah */
-}/* MESSAGE PAGE */
-.messageWrap{
-width:100%;
-height:100%;
-position:relative;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.bgPhoto{
 position:absolute;
-inset:0;
-background: linear-gradient
-(rgba(0,0,0,.15), rgba(0,0,0,.25)), url("iloveu.jpeg");
-background-size:cover;
-background-position:center;
-filter: blur(2px);
-transform:scale(1.1);
+
+/* Menggunakan persentase kecil agar kertas melebar hampir penuh di laptop */
+left: 5%;
+
+right: 5%;
+
+/* Membatasi lebar maksimal di layar laptop besar agar tetap estetis */
+max-width: 800px;
+
+/* Agar kertas yang dibatasi max-width tetap berada tepat di tengah-tengah */
+margin: 0 auto;
+
+/* Jarak dari atas layar */
+top: 30px;
+
+/* Tingginya diperbesar menjadi 480px biar sangat lega membaca isi teksnya */
+height: 480px; 
+
+background:white;
+
+color:#333;
+
+padding:40px; /* Jarak teks ke pinggir kertas dibuat lebih luas dan tidak sesak */
+
+border-radius:24px; /* Sudut kertas dibuat sedikit lebih melengkung halus */
+
+overflow:auto;
+
+/* SEMBUNYIKAN DULU */
+
+transform:
+translateY(180px);
+
+opacity:0;
+
+transition:
+
+transform 1.3s ease,
+opacity .6s ease;
+
+z-index:1;
+
 }
 
-.envelope{
-position:relative;
-width:320px;
-height:230px;
-background: #c01234;
-border-radius:12px;
-cursor:pointer;
-z-index:5;
-box-shadow: 0 20px 60px rgba(0,0,0,.4);
+/* Otomatis menyesuaikan ukuran saat dibuka di layar HP */
+@media(max-width:900px){
+    .letter {
+        left: 15px;
+        right: 15px;
+        top: 40px;
+        height: 420px; /* Di HP tingginya disesuaikan agar tidak memotong layar */
+        padding: 25px; /* Jarak teks di dalam kertas sedikit disesuaikan untuk HP */
+    }
 }
-
-.cover{
-position:absolute;
-width:100%;
-height:120px;
-background: #e31b45;
-clip-path: polygon(0 0, 100% 0, 50% 100%);
-transform-origin:top;
-transition:1s;
-}
-
-.letter {
-    position: absolute;
-    left: -180px;  /* Ukuran pas di laptop */
-    right: -180px;
-    height: 450px; 
-    background: white;
-    color: #333;
-    padding: 40px 35px;
-    border-radius: 24px;
-    overflow: auto;
-    transform: translate(-50%, 150px) scale(0.9);
-    opacity: 0;
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity .5s ease;
-    z-index: 1;
-}
-
 .open .cover{
-transform: rotateX(180deg);
+
+transform:
+
+rotateX(180deg);
+
 }
 
-.open .letter {
-    transform: translateY(-160px) scale(1);
-    opacity: 1;
-    z-index: 10;
+.open .letter{
+
+transform:
+
+translateY(-120px);
+
+opacity:1;
+
+z-index:10;
+
 }
 
-.letterTitle {
-    font-family: "Great Vibes";
-    font-size: 38px;
-    color: #a70028;
-    margin-bottom: 20px;
-    text-align: center;
+.letterTitle{
+
+font-family:
+
+Great Vibes;
+
+font-size:34px;
+
+color:#a70028;
+
+margin-bottom:20px;
+
 }
 
-.letterText {
-    line-height: 1.8;
-    font-size: 15px;
-    text-align: center; /* Teks otomatis rata tengah */
+.letterText{
+
+line-height:1.8;
+
+font-size:15px;
+
 }
 
 .polaroids{
@@ -627,6 +676,21 @@ rotate(-10deg);
 
 }
 
+@media(max-width:900px){
+
+.envelope{
+
+width:270px;
+
+}
+
+.polaroid{
+
+width:110px;
+
+}
+
+}
 
 /* FLOWER */
 
@@ -1784,16 +1848,14 @@ onclick="openLetter()">
 <div class="letter">
 
 <div class="letterTitle">
-Hi, Cahyo!
+Hi,Cahyo!
 </div>
 
 <div class="letterText">
-Selamat Ulang Tahun <br><br>
-Harap demi harap dilangitkan kembali untukmu, <br>
+Harap demi harap dilangitkan kembali untukmu, <br><br>
 dan semoga demi semoga akan diucapkan dengan <br>
 lantang oleh semua penduduk bumi yang menyayangimu.<br>
-Terima kasih untuk masih bertahan  dengan <br>
-semua yang telah kamu lalui.<br><br>
+Terima kasih untuk masih bertahan dengan semua yang telah kamu lalui.<br><br>
 I love you<br>
 -Myra✨
 </div>
