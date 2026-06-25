@@ -1415,35 +1415,20 @@ scroll-behavior:smooth;
 #loader{
 pointer-events:none;
 position:fixed;
-
 inset:0;
-
 background:black;
-
 z-index:99999;
-
 display:flex;
-
 flex-direction:column;
-
 justify-content:center;
-
 align-items:center;
-
-text-align: center; /* Memastikan teks panjang tetap rata tengah di HP */
-
-padding: 20px; /* Biar tidak mentok ke pinggir layar HP */
-
-height: 100vh; /* MEMAKSA LOADER MEMENUHI TINGGI LAYAR HP */
-
+text-align: center; 
+padding: 20px;
+height: 100vh; 
 animation:
-
 loaderHide
-
 4s
-
 forwards;
-
 }
 
 .loaderText{
@@ -1624,6 +1609,42 @@ infinite;
 
 }
 
+/* POLAROID*/
+
+.p1 {
+    left: 8%;
+    top: 10%;
+    transform: rotate(-8deg);
+}
+
+.p2 {
+    right: 8%;
+    top: 10%;
+    transform: rotate(8deg);
+}
+
+.p3 {
+    left: 8%;
+    bottom: 12%;
+    transform: rotate(-5deg);
+}
+
+.p4 {
+    right: 8%;
+    bottom: 12%;
+    transform: rotate(6deg);
+}
+
+/* Biar di HP fotonya mengecil otomatis dan tidak berantakan keluar layar */
+@media(max-width:900px){
+    .polaroid {
+        width: 100px; /* Ukuran foto lebih pas di HP */
+    }
+    .p1 { left: 4%; top: 8%; }
+    .p2 { right: 4%; top: 8%; }
+    .p3 { left: 4%; bottom: 8%; }
+    .p4 { right: 4%; bottom: 8%; }
+}
 
 /* FLOAT */
 
@@ -1843,34 +1864,26 @@ Always keep smiling ✨
 <div class="polaroids">
 
 <div class="polaroid p1">
-
 <img
-src="https://picsum.photos/300?1">
-
+src ="biru.jpeg">
 </div>
 
 
 <div class="polaroid p2">
-
 <img
-src="https://picsum.photos/300?2">
-
+src="hijau.jpeg">
 </div>
 
 
 <div class="polaroid p3">
-
 <img
-src="https://picsum.photos/300?3">
-
+src="pink.jpeg">
 </div>
 
 
 <div class="polaroid p4">
-
 <img
-src="https://picsum.photos/300?4">
-
+src="ungu.jpeg">
 </div>
 
 
