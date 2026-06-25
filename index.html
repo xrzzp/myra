@@ -330,220 +330,190 @@ cursor:pointer;
 @media(max-width:900px){
 
 body{
-
 overflow:auto;
-
 }
 
 .main{
-
 padding:50px;
-
 height:auto;
-
 }
 
 .title{
-
 font-size:48px;
-
 }
 
 .gifts{
-
 flex-direction:column;
-
 }
 
 .box{
-
 width:180px;
-
 height:180px;
-
 font-size:90px;
-
-}
-
 }
 
 
-/* MESSAGE */
-
+/* MESSAGE PAGE */
 .messageWrap{
-
 width:100%;
-
 height:100%;
-
 position:relative;
-
 overflow:hidden;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 }
 
 .bgPhoto{
-
 position:absolute;
-
 inset:0;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.15),
-rgba(0,0,0,.25)
-),
-
-url("iloveu.jpeg");
-
+background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.25)), url("iloveu.jpg");
 background-size:cover;
-
 background-position:center;
-
-filter:
-
-blur(2px);
-
+filter: blur(2px);
 transform:scale(1.1);
-
 }
 
 .envelope{
-
 position:relative;
-
 width:320px;
-
 height:230px;
-
-background:
-
-#c01234;
-
+background: #c01234;
 border-radius:12px;
-
 cursor:pointer;
-
 z-index:5;
-
-box-shadow:
-
-0 20px 60px
-rgba(0,0,0,.4);
-
+box-shadow: 0 20px 60px rgba(0,0,0,.4);
 }
 
 .cover{
-
 position:absolute;
-
 width:100%;
-
 height:120px;
-
-background:
-
-#e31b45;
-
-clip-path:
-
-polygon(
-0 0,
-100% 0,
-50% 100%
-);
-
+background: #e31b45;
+clip-path: polygon(0 0, 100% 0, 50% 100%);
 transform-origin:top;
-
 transition:1s;
-
 }
 
-.letter{
-
-position:absolute;
-
-left:18px;
-
-right:18px;
-
-top:40px;
-
-height:260px;
-
-background:white;
-
-color:#333;
-
-padding:25px;
-
-border-radius:18px;
-
-overflow:auto;
-
-/* SEMBUNYIKAN DULU */
-
-transform:
-translateY(180px);
-
-opacity:0;
-
-transition:
-
-transform 1.3s ease,
-opacity .6s ease;
-
-z-index:1;
-
+.letter {
+    position: absolute;
+    left: -180px;  /* Ukuran pas di laptop */
+    right: -180px;
+    height: 450px; 
+    background: white;
+    color: #333;
+    padding: 40px 35px;
+    border-radius: 24px;
+    overflow: auto;
+    transform: translateY(150px) scale(0.9);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity .5s ease;
+    z-index: 1;
 }
 
 .open .cover{
-
-transform:
-
-rotateX(180deg);
-
+transform: rotateX(180deg);
 }
 
-.open .letter{
-
-transform:
-
-translateY(-120px);
-
-opacity:1;
-
-z-index:10;
-
+.open .letter {
+    transform: translateY(-160px) scale(1);
+    opacity: 1;
+    z-index: 10;
 }
 
-.letterTitle{
-
-font-family:
-
-Great Vibes;
-
-font-size:34px;
-
-color:#a70028;
-
-margin-bottom:20px;
-
+.letterTitle {
+    font-family: "Great Vibes";
+    font-size: 38px;
+    color: #a70028;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.letterText{
+.letterText {
+    line-height: 1.8;
+    font-size: 15px;
+    text-align: center; /* Teks otomatis rata tengah */
+}/* MESSAGE PAGE */
+.messageWrap{
+width:100%;
+height:100%;
+position:relative;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-line-height:1.8;
+.bgPhoto{
+position:absolute;
+inset:0;
+background: linear-gradient
+(rgba(0,0,0,.15), rgba(0,0,0,.25)), url("iloveu.jpeg");
+background-size:cover;
+background-position:center;
+filter: blur(2px);
+transform:scale(1.1);
+}
 
-font-size:15px;
+.envelope{
+position:relative;
+width:320px;
+height:230px;
+background: #c01234;
+border-radius:12px;
+cursor:pointer;
+z-index:5;
+box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
 
+.cover{
+position:absolute;
+width:100%;
+height:120px;
+background: #e31b45;
+clip-path: polygon(0 0, 100% 0, 50% 100%);
+transform-origin:top;
+transition:1s;
+}
+
+.letter {
+    position: absolute;
+    left: -180px;  /* Ukuran pas di laptop */
+    right: -180px;
+    height: 450px; 
+    background: white;
+    color: #333;
+    padding: 40px 35px;
+    border-radius: 24px;
+    overflow: auto;
+    transform: translate(-50%, 150px) scale(0.9);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity .5s ease;
+    z-index: 1;
+}
+
+.open .cover{
+transform: rotateX(180deg);
+}
+
+.open .letter {
+    transform: translateY(-160px) scale(1);
+    opacity: 1;
+    z-index: 10;
+}
+
+.letterTitle {
+    font-family: "Great Vibes";
+    font-size: 38px;
+    color: #a70028;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.letterText {
+    line-height: 1.8;
+    font-size: 15px;
+    text-align: center; /* Teks otomatis rata tengah */
 }
 
 .polaroids{
@@ -657,21 +627,6 @@ rotate(-10deg);
 
 }
 
-@media(max-width:900px){
-
-.envelope{
-
-width:270px;
-
-}
-
-.polaroid{
-
-width:110px;
-
-}
-
-}
 
 /* FLOWER */
 
@@ -1829,34 +1784,20 @@ onclick="openLetter()">
 <div class="letter">
 
 <div class="letterTitle">
-
-click to view
-
+Hi, Cahyo!
 </div>
 
 <div class="letterText">
-
-Happy birthday ❤️
-
-Wishing you a day filled
-with laughter,
-good vibes,
-and beautiful moments.
-
-Thank you for being part
-of this journey.
-
-I hope this year brings
-you opportunities,
-great memories,
-and everything good.
-
-Always keep smiling ✨
-
+Selamat Ulang Tahun <br><br>
+Harap demi harap dilangitkan kembali untukmu, <br>
+dan semoga demi semoga akan diucapkan dengan <br>
+lantang oleh semua penduduk bumi yang menyayangimu.<br>
+Terima kasih untuk masih bertahan  dengan <br>
+semua yang telah kamu lalui.<br><br>
+I love you<br>
+-Myra✨
 </div>
-
 </div>
-
 </div>
 
 
